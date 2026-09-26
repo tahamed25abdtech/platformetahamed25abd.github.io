@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة طه للبحوث والمذكرات</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #1261a0;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px 15px;
+        }
+
+        .search {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .search input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .search button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #1261a0;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .card .icon {
+            font-size: 40px;
+        }
+
+        .card h2 {
+            color: #1261a0;
+        }
+
+        .card button {
+            background: #1261a0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 منصة طه للبحوث والمذكرات</h1>
+    <p>بحوث مدرسية • مذكرات جامعية • تقارير • نماذج</p>
+</header>
+
+<div class="container">
+
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="ابحث عن بحث أو مذكرة...">
+        <button onclick="search()">بحث</button>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h2>البحوث المدرسية</h2>
+            <p>بحوث مدرسية لمختلف المستويات والمواد.</p>
+            <button onclick="openSection('البحوث المدرسية')">استعراض</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎓</div>
+            <h2>المذكرات الجامعية</h2>
+            <p>مذكرات جامعية ومراجع للطلبة.</p>
+            <button onclick="openSection('المذكرات الجامعية')">استعراض</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h2>التقارير والنماذج</h2>
+            <p>تقارير ونماذج جاهزة للاستعمال والتعديل.</p>
+            <button onclick="openSection('التقارير والنماذج')">استعراض</button>
+        </div>
+
+        <div class="card">
+            <div class="icon">📥</div>
+            <h2>التحميل</h2>
+            <p>تحميل الملفات والبحوث والمذكرات.</p>
+            <button onclick="openSection('التحميل')">فتح</button>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 منصة طه للبحوث والمذكرات
+</footer>
+
+<script>
+function search() {
+    let text = document.getElementById("searchInput").value;
+
+    if (text.trim() === "") {
+        alert("اكتب كلمة البحث أولاً");
+    } else {
+        alert("بحث تجريبي عن: " + text);
+    }
+}
+
+function openSection(section) {
+    alert("قسم " + section + " — سيتم تطويره في المرحلة القادمة.");
+}
+</script>
+
+</body>
+</html>
