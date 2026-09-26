@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>منصة طه للبحوث والمذكرات</title>
 
     <style>
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -38,7 +41,7 @@
         .search {
             display: flex;
             gap: 10px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .search input {
@@ -68,11 +71,11 @@
         }
 
         .categories button {
-            padding: 10px 18px;
             border: none;
-            border-radius: 20px;
-            background: #e1edf7;
+            background: #dcecf8;
             color: #1261a0;
+            padding: 10px 18px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
         }
@@ -112,12 +115,16 @@
             margin-top: 30px;
         }
 
+        #results h2 {
+            color: #1261a0;
+        }
+
         .result {
             background: white;
-            padding: 18px;
-            margin-bottom: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .result h3 {
@@ -125,17 +132,17 @@
             margin-top: 0;
         }
 
-        .result span {
+        .result .category {
             color: #777;
             font-size: 14px;
         }
 
-        .result button {
-            margin-top: 10px;
+        .download {
+            margin-top: 12px;
             background: #1261a0;
             color: white;
             border: none;
-            padding: 9px 16px;
+            padding: 9px 18px;
             border-radius: 7px;
             cursor: pointer;
         }
@@ -146,161 +153,360 @@
             margin-top: 30px;
             background: #eee;
         }
+
     </style>
 </head>
+
 
 <body>
 
 <header>
+
     <h1>📚 منصة طه للبحوث والمذكرات</h1>
-    <p>بحوث مدرسية • مذكرات جامعية • تقارير • نماذج</p>
+
+    <p>
+        بحوث مدرسية • مذكرات جامعية • تقارير • نماذج
+    </p>
+
 </header>
+
 
 <div class="container">
 
+
+    <!-- البحث -->
+
     <div class="search">
-        <input type="text" id="searchInput" placeholder="ابحث عن بحث أو مذكرة...">
-        <button onclick="search()">بحث</button>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 ابحث عن بحث أو مذكرة..."
+        >
+
+        <button onclick="searchResearch()">
+            بحث
+        </button>
+
     </div>
 
+
+    <!-- التصنيفات -->
+
     <div class="categories">
-        <button onclick="filterCategory('الكل')">الكل</button>
-        <button onclick="filterCategory('ابتدائي')">ابتدائي</button>
-        <button onclick="filterCategory('متوسط')">متوسط</button>
-        <button onclick="filterCategory('ثانوي')">ثانوي</button>
-        <button onclick="filterCategory('جامعي')">جامعي</button>
+
+        <button onclick="showCategory('الكل')">
+            الكل
+        </button>
+
+        <button onclick="showCategory('ابتدائي')">
+            ابتدائي
+        </button>
+
+        <button onclick="showCategory('متوسط')">
+            متوسط
+        </button>
+
+        <button onclick="showCategory('ثانوي')">
+            ثانوي
+        </button>
+
+        <button onclick="showCategory('جامعي')">
+            جامعي
+        </button>
+
+        <button onclick="showCategory('تقارير')">
+            تقارير
+        </button>
+
     </div>
+
+
+    <!-- الأقسام -->
 
     <div class="cards">
 
         <div class="card">
+
             <div class="icon">📚</div>
-            <h2>البحوث المدرسية</h2>
-            <p>بحوث مدرسية لمختلف المستويات والمواد.</p>
-            <button onclick="filterCategory('الكل')">استعراض</button>
+
+            <h2>
+                البحوث المدرسية
+            </h2>
+
+            <p>
+                بحوث لمختلف المستويات والمواد.
+            </p>
+
+            <button onclick="showCategory('الكل')">
+                استعراض
+            </button>
+
         </div>
 
+
         <div class="card">
+
             <div class="icon">🎓</div>
-            <h2>المذكرات الجامعية</h2>
-            <p>مذكرات جامعية ومراجع للطلبة.</p>
-            <button onclick="filterCategory('جامعي')">استعراض</button>
+
+            <h2>
+                المذكرات الجامعية
+            </h2>
+
+            <p>
+                مذكرات ومراجع للطلبة.
+            </p>
+
+            <button onclick="showCategory('جامعي')">
+                استعراض
+            </button>
+
         </div>
 
+
         <div class="card">
+
             <div class="icon">📝</div>
-            <h2>التقارير والنماذج</h2>
-            <p>تقارير ونماذج جاهزة للاستعمال والتعديل.</p>
-            <button onclick="filterCategory('تقارير')">استعراض</button>
+
+            <h2>
+                التقارير والنماذج
+            </h2>
+
+            <p>
+                تقارير ونماذج جاهزة.
+            </p>
+
+            <button onclick="showCategory('تقارير')">
+                استعراض
+            </button>
+
         </div>
 
+
         <div class="card">
+
             <div class="icon">📥</div>
-            <h2>التحميل</h2>
-            <p>تحميل الملفات والبحوث والمذكرات.</p>
-            <button onclick="filterCategory('الكل')">فتح</button>
+
+            <h2>
+                التحميل
+            </h2>
+
+            <p>
+                تحميل البحوث والمذكرات.
+            </p>
+
+            <button onclick="showCategory('الكل')">
+                فتح
+            </button>
+
         </div>
 
     </div>
 
-    <div id="results"></div>
+
+    <!-- هنا تظهر البحوث -->
+
+    <div id="results">
+
+        <h2>
+            📚 البحوث المتوفرة
+        </h2>
+
+    </div>
+
 
 </div>
 
+
 <footer>
+
     © 2026 منصة طه للبحوث والمذكرات
+
 </footer>
+
 
 <script>
 
+
+/* قائمة البحوث */
+
 const researches = [
+
     {
         title: "بحث حول الماء",
         category: "ابتدائي",
         description: "بحث مدرسي حول أهمية الماء والمحافظة عليه."
     },
+
     {
         title: "بحث حول التلوث",
         category: "متوسط",
         description: "بحث حول أنواع التلوث وأسبابه وطرق الحد منه."
     },
+
     {
         title: "بحث حول الثورة الجزائرية",
         category: "ثانوي",
         description: "بحث تاريخي حول الثورة الجزائرية."
     },
+
     {
         title: "مذكرة في علوم الطبيعة",
         category: "جامعي",
         description: "نموذج مذكرة جامعية في علوم الطبيعة."
     },
+
     {
         title: "تقرير تربص",
         category: "تقارير",
         description: "نموذج تقرير تربص قابل للتعديل."
     }
+
 ];
 
-function displayResults(list) {
+
+
+/* عرض البحوث */
+
+function displayResearches(list) {
 
     const results = document.getElementById("results");
 
+    results.innerHTML = "<h2>📚 البحوث المتوفرة</h2>";
+
+
     if (list.length === 0) {
-        results.innerHTML = "<p>❌ لم يتم العثور على نتائج.</p>";
+
+        results.innerHTML +=
+            "<p>❌ لم يتم العثور على نتائج.</p>";
+
         return;
     }
 
-    results.innerHTML = list.map(item => `
-        <div class="result">
-            <h3>${item.title}</h3>
-            <span>📌 التصنيف: ${item.category}</span>
-            <p>${item.description}</p>
-            <button onclick="alert('سيتم إضافة ملف التحميل لاحقًا')">
-                📥 تحميل
-            </button>
-        </div>
-    `).join("");
+
+    list.forEach(function(item) {
+
+        results.innerHTML += `
+
+            <div class="result">
+
+                <h3>
+                    ${item.title}
+                </h3>
+
+                <div class="category">
+                    📌 المستوى: ${item.category}
+                </div>
+
+                <p>
+                    ${item.description}
+                </p>
+
+                <button
+                    class="download"
+                    onclick="alert('سيتم إضافة ملف PDF لهذا البحث لاحقًا')"
+                >
+                    📥 تحميل
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
 }
 
-function search() {
 
-    const text = document
+
+/* البحث */
+
+function searchResearch() {
+
+    const text =
+        document
         .getElementById("searchInput")
         .value
         .trim()
         .toLowerCase();
 
+
     if (text === "") {
-        displayResults(researches);
+
+        displayResearches(researches);
+
         return;
     }
 
-    const filtered = researches.filter(item =>
-        item.title.toLowerCase().includes(text) ||
-        item.description.toLowerCase().includes(text) ||
-        item.category.toLowerCase().includes(text)
-    );
 
-    displayResults(filtered);
+    const results =
+        researches.filter(function(item) {
+
+            return (
+
+                item.title
+                .toLowerCase()
+                .includes(text)
+
+                ||
+
+                item.description
+                .toLowerCase()
+                .includes(text)
+
+                ||
+
+                item.category
+                .toLowerCase()
+                .includes(text)
+
+            );
+
+        });
+
+
+    displayResearches(results);
+
 }
 
-function filterCategory(category) {
+
+
+/* التصنيف */
+
+function showCategory(category) {
+
 
     if (category === "الكل") {
-        displayResults(researches);
+
+        displayResearches(researches);
+
         return;
+
     }
 
-    const filtered = researches.filter(item =>
-        item.category === category
-    );
 
-    displayResults(filtered);
+    const results =
+        researches.filter(function(item) {
+
+            return item.category === category;
+
+        });
+
+
+    displayResearches(results);
+
 }
 
-displayResults(researches);
+
+
+/* عرض البحوث عند فتح الموقع */
+
+displayResearches(researches);
+
 
 </script>
 
+
 </body>
+
 </html>
